@@ -23,7 +23,7 @@ const HomeScreen = ({ navigation }) => {
             <Text>You are in Home Screen</Text>
             <Button
                 title="Go to Map Section"
-                onPress={() => navigation.push("Map")}
+                onPress={() => navigation.navigate('Map')}
             />
         </View>
     )
