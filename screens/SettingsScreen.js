@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
-const EventsScreen = () => {
+const SettingsScreen = () => {
     return (
       <View style={styles.container}>
-        <Text>Events Screen</Text>
+        <Text>Settings Screen</Text>
         <Button
           title="Click Here"
           onPress={() => alert('Button Clicked!')}
@@ -13,7 +13,7 @@ const EventsScreen = () => {
     );
 };
 
-export default EventsScreen;
+export default SettingsScreen;
 
 const styles = StyleSheet.create({
   container: {

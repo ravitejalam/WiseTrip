@@ -10,6 +10,8 @@ import EventsScreen from './EventsScreen';
 
 const HomeStack = createStackNavigator();
 const MapStack = createStackNavigator();
+const EventsStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
@@ -30,9 +32,10 @@ const MainTabScreen = () => (
         />
         <Tab.Screen
             name="Events"
-            component={MapStackScreen}
+            component={EventsStackScreen}
             options={{
                 tabBarLabel: 'Events',
+                tabBarColor: '#27AE60',
                 tabBarIcon: ({ color }) => (
                     <Icon name="ios-calendar" color={color} size={26} />
                 ),
@@ -40,7 +43,7 @@ const MainTabScreen = () => (
         />
         <Tab.Screen
             name="Profile"
-            component={MapStackScreen}
+            component={ProfileStackScreen}
             options={{
                 tabBarLabel: 'Profile',
                 tabBarColor: '#694FAD',
@@ -99,6 +102,44 @@ const MapStackScreen = ({ navigation }) => (
         }}
         />
     </MapStack.Navigator>
+)
+
+const EventsStackScreen = ({ navigation }) => (
+    <EventsStack.Navigator screenOptions={{
+        headerStyle: {
+            backgroundColor: '#27AE60'
+        },
+        headerTintColor: '#fff',
+        headerTintStyle: {
+            fontWeight: 'bold'
+        }
+    }}>
+        <MapStack.Screen name="Events" component={EventsScreen} options={{
+            headerLeft: () => (
+                <Icon.Button name="ios-menu" size={25} backgroundColor="#27AE60" onPress={() => navigation.openDrawer()}></Icon.Button>
+            )
+        }}
+        />
+    </EventsStack.Navigator>
+)
+
+const ProfileStackScreen = ({ navigation }) => (
+    <ProfileStack.Navigator screenOptions={{
+        headerStyle: {
+            backgroundColor: '#694FAD'
+        },
+        headerTintColor: '#fff',
+        headerTintStyle: {
+            fontWeight: 'bold'
+        }
+    }}>
+        <MapStack.Screen name="Profile" component={ProfileScreen} options={{
+            headerLeft: () => (
+                <Icon.Button name="ios-menu" size={25} backgroundColor="#694FAD" onPress={() => navigation.openDrawer()}></Icon.Button>
+            )
+        }}
+        />
+    </ProfileStack.Navigator>
 )
 
 export default MainTabScreen;

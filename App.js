@@ -22,15 +22,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MainTabScreen from './screens/MainTabScreen';
+import { DrawerContent } from "./screens/DrawerContents";
+import SupportScreen from "./screens/SupportScreen";
+import SettingsScreen from "./screens/SettingsScreen";
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={MainTabScreen} />
-        {/* <Drawer.Screen name="Map" component={MapStackScreen} /> */}
+      <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+        <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
+        <Drawer.Screen name="SupportScreen" component={SupportScreen} />
+        <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
