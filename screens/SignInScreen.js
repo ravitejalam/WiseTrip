@@ -5,6 +5,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-community/google-signin';
+import { SocialIcon } from 'react-native-elements'
+
+GoogleSignin.configure({
+  webClientId: '',
+});
 
 const SignInScreen = ({ navigation }) => {
 
@@ -97,7 +103,14 @@ const SignInScreen = ({ navigation }) => {
     else {
       alert("Email or Password are not Valid");
     }
+  }
 
+  async function onGoogleButtonPress() {
+    const { idToken } = await GoogleSignin.signIn();
+
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+    return auth().signInWithCredential(googleCredential);
   }
 
   return (
@@ -142,6 +155,15 @@ const SignInScreen = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.navigate('SignUpScreen')} style={[styles.signIn, { borderColor: '#009387', borderWidth: 1, marginTop: 15 }]}>
             <Text style={[styles.textSign, { color: '#009387' }]}>Sign Up</Text>
           </TouchableOpacity>
+          <SocialIcon
+            title="Sign In With Google"
+            button
+            
+            style={[styles.signIn, { marginTop: 15 }]}
+            raised={true}
+            type='google'
+            onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+          />
         </View>
       </Animatable.View>
     </View>
