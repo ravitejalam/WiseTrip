@@ -15,19 +15,24 @@ import {
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import { color } from 'react-native-reanimated';
+import auth from '@react-native-firebase/auth';
 
 export function DrawerContent(props) {
-    const [isDarkTheme,setIsDarkTheme] = React.useState(false);
+    const [isDarkTheme, setIsDarkTheme] = React.useState(false);
 
     const toggleTheme = () => {
         setIsDarkTheme(!isDarkTheme);
     }
-
+    const firebaseSignOut = () => {
+        auth()
+            .signOut()
+            .then(() => console.log('User signed out!'));
+    }
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerContent}>
-                    <View style={styles.userInfoSection} onStartShouldSetResponder={() => {props.navigation.navigate('Profile')}}>
+                    <View style={styles.userInfoSection} onStartShouldSetResponder={() => { props.navigation.navigate('Profile') }}>
                         <View style={{ flexDirection: 'row', marginTop: 15 }}>
                             <Avatar.Image
                                 source={{
@@ -52,49 +57,49 @@ export function DrawerContent(props) {
                         </View>
                     </View>
                     <Drawer.Section style={styles.drawerSection}>
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <Icon 
-                                name="settings-outline" 
-                                color={color}
-                                size={size}
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <Icon
+                                    name="settings-outline"
+                                    color={color}
+                                    size={size}
                                 />
                             )}
                             label="Settings"
-                            onPress={() => {props.navigation.navigate('SettingsScreen')}}
+                            onPress={() => { props.navigation.navigate('SettingsScreen') }}
                         />
-                        <DrawerItem 
-                            icon={({color, size}) => (
-                                <Icon 
-                                name="help-buoy" 
-                                color={color}
-                                size={size}
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <Icon
+                                    name="help-buoy"
+                                    color={color}
+                                    size={size}
                                 />
                             )}
                             label="Support"
-                            onPress={() => {props.navigation.navigate('SupportScreen')}}
+                            onPress={() => { props.navigation.navigate('SupportScreen') }}
                         />
                     </Drawer.Section>
                     <Drawer.Section title="Preferences">
-                        <TouchableRipple onPress={() => {toggleTheme()}}>
+                        <TouchableRipple onPress={() => { [toggleTheme(), alert('Dark Theme is under development')] }}>
                             <View style={styles.preference}>
                                 <Text>Dark Theme</Text>
                                 <View pointerEvents="none">
-                                    <Switch value={isDarkTheme}/>
+                                    <Switch value={isDarkTheme} />
                                 </View>
                             </View>
                         </TouchableRipple>
                     </Drawer.Section>
                 </View>
             </DrawerContentScrollView>
-            
+
             <Drawer.Section style={styles.bottomDrawerSection}>
                 <DrawerItem
                     icon={({ color, size }) => (
                         <Icon name="exit-outline" color={color} size={size} />
                     )}
                     label="Sign Out"
-                    onPress={() => { }}
+                    onPress={firebaseSignOut}
                 />
             </Drawer.Section>
         </View>
