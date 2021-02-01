@@ -1,22 +1,12 @@
 import React from 'react';
-import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar,
-    Button,
-    PermissionsAndroid,
-} from 'react-native';
+import {PermissionsAndroid, StyleSheet,} from 'react-native';
 
-import MapView, { PROVIDER_GOOGLE, Permissions, Location } from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 
 // Geolocation.setRNConfiguration(config);
 const styles = StyleSheet.create({
     map: {
-        flex: 1,
         position: 'absolute',
         top: 0,
         left: 0,
@@ -25,36 +15,25 @@ const styles = StyleSheet.create({
     },
 });
 
-let region = {
-    // latitude: location.coords.latitude,
-    // longitude: location.coords.longitude,
-    latitude: 17.690,
-    longitude: 83.169,
-    latitudeDelta: 0.015,
-    longitudeDelta: 0.0121,
-}
-
 export default class MapScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             region: null,
         }
-
-        this._getLocationAsync();
+        this._getLocation();
     }
 
-    _getLocationAsync = async () => {
-        Geolocation.watchPosition((position) => {
-            let tmp = {
+    _getLocation = async () => {
+        Geolocation.getCurrentPosition((position) => {
+            let coords = {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
-                latitudeDelta: 0.00922 * 1.5,
-                longitudeDelta: 0.00421 * 1.5
+                latitudeDelta: 0.012,
+                longitudeDelta: 0.01
             }
-            this.setState({ region: tmp })
+            this.setState({ region: coords })
         })
-
     }
 
     render() {
@@ -76,6 +55,7 @@ export default class MapScreen extends React.Component {
                 toolbarEnabled={true}
                 zoomEnabled={true}
                 rotateEnabled={true}
+                initialRegion={this.state.region}
                 region={this.state.region}
             >
             </MapView>

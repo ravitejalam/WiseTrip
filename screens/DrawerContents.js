@@ -32,7 +32,7 @@ export function DrawerContent(props) {
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerContent}>
-                    <View style={styles.userInfoSection} onStartShouldSetResponder={() => { props.navigation.navigate('Profile') }}>
+                    <View style={styles.userInfoSection} onStartShouldSetResponder={() => { props.navigation.navigate('ProfileScreen') }}>
                         <View style={{ flexDirection: 'row', marginTop: 15 }}>
                             <Avatar.Image
                                 source={{
@@ -57,6 +57,17 @@ export function DrawerContent(props) {
                         </View>
                     </View>
                     <Drawer.Section style={styles.drawerSection}>
+                    <DrawerItem
+                            icon={({ color, size }) => (
+                                <Icon
+                                    name="ios-calendar"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Events"
+                            onPress={() => { props.navigation.navigate('EventsScreen') }}
+                        />
                         <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon

@@ -21,6 +21,9 @@ import SupportScreen from "./screens/SupportScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 
 import RootStackScreen from "./screens/RootStackScreen"
+import EventsScreen from './screens/EventsScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import MapScreen from './screens/MapScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -36,7 +39,7 @@ export default function App() {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
+    return subscriber;
   }, []);
 
   if (!user) {
@@ -51,6 +54,8 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
+        <Drawer.Screen name="EventsScreen" component={EventsScreen} />
+        <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
         <Drawer.Screen name="SupportScreen" component={SupportScreen} />
         <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
       </Drawer.Navigator>
