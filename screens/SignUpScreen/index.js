@@ -7,8 +7,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {SocialIcon} from 'react-native-elements'
-import testInputChange from '../SignInScreen/SignInScreen'
-import handlePasswordChange from '../SignInScreen/SignInScreen'
+import testInputChange from '../SignInScreen'
+import handlePasswordChange from '../SignInScreen'
 import styles from '../SignInScreen/styles'
 
 GoogleSignin.configure({
