@@ -1,24 +1,16 @@
 import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity,
-    Dimensions,
-    StyleSheet,
-    StatusBar,
-    Image
-} from 'react-native';
+import {Dimensions, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { useTheme } from '@react-navigation/native';
+import {useTheme} from '@react-navigation/native';
 
-const SplashScreen = ({ navigation }) => {
-    const { colors } = useTheme();
+const SplashScreen = ({navigation}) => {
+    const {colors} = useTheme();
 
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor='#009387' barStyle="light-content" />
+            <StatusBar backgroundColor='#009387' barStyle="light-content"/>
             <View style={styles.header}>
                 <Animatable.Image
                     animation="bounceIn"
@@ -60,7 +52,7 @@ const SplashScreen = ({ navigation }) => {
 
 export default SplashScreen;
 
-const { height } = Dimensions.get("screen");
+const {height} = Dimensions.get("screen");
 const height_logo = height * 0.28;
 
 const styles = StyleSheet.create({

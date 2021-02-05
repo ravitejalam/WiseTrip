@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         bottom: 0,
     },
     MapContainer: {
-        height: 800 ,
+        height: 800,
     },
 });
 export default styles;

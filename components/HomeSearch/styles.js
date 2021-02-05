@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 10,
     },
     CreateEventInputText: {
         fontSize: 20,
@@ -26,16 +26,16 @@ const styles = StyleSheet.create({
     UpComingEventBox: {
         flexDirection: 'row',
         alignItems: 'center',
-        borderWidth:1,
+        borderWidth: 1,
         margin: 10,
-        padding:10,
-        borderRadius: 5,
-        borderColor:"#e3e3e3",
+        padding: 10,
+        borderRadius: 10,
+        borderColor: "#e3e3e3",
     },
     UpComingEventIconContainer: {
-        backgroundColor:'#a39f9f',
-        padding:10,
-        borderRadius:25,
+        backgroundColor: '#a39f9f',
+        padding: 10,
+        borderRadius: 25,
     },
     UpComingEventText: {
         marginLeft: 10,
@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#444444'
     },
-
+    HomeSearchContainer: {
+        borderTopColor: '#5a5a5a',
+        borderTopWidth: 1,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+    }
 });
 export default styles;

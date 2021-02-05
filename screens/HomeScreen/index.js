@@ -1,24 +1,22 @@
 import React from 'react';
-import {StatusBar, StyleSheet, View,} from 'react-native';
+import {SafeAreaView, StatusBar, View,} from 'react-native';
 import HomeMap from "../../components/HomeMap";
 import HomeSearch from "../../components/HomeSearch";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import styles from "./styles";
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-});
-
-const HomeScreen = ({navigation}) => {
+const HomeScreen = (props) => {
     return (
-        <View >
+        <View>
             <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+            <SafeAreaView>
+                <View style={styles.headerBar}>
+                    <Ionicons size={32} name='menu' onPress={() => props.navigation.openDrawer()}/>
+                </View>
+            </SafeAreaView>
+
             <HomeMap/>
             <HomeSearch/>
-            {/*create event*/}
-            {/*upcomment event*/}
         </View>
     )
 };

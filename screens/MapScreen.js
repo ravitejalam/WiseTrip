@@ -32,7 +32,7 @@ export default class MapScreen extends React.Component {
                 latitudeDelta: 0.012,
                 longitudeDelta: 0.01
             }
-            this.setState({ region: coords })
+            this.setState({region: coords})
         })
     }
 

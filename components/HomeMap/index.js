@@ -1,5 +1,5 @@
 import React from "react";
-import {PermissionsAndroid, StyleSheet, View,} from 'react-native';
+import {PermissionsAndroid, View,} from 'react-native';
 
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';

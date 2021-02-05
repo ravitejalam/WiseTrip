@@ -1,64 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
 
 import auth from '@react-native-firebase/auth';
 
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import MainTabScreen from './screens/MainTabScreen';
-import { DrawerContent } from "./screens/DrawerContents";
-import SupportScreen from "./screens/SupportScreen";
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {DrawerContent} from "./screens/Drawer";
+import AboutScreen from "./screens/AboutScreen/aboutScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 
 import RootStackScreen from "./screens/RootStackScreen"
 import EventsScreen from './screens/EventsScreen';
 import ProfileScreen from './screens/ProfileScreen';
-import MapScreen from './screens/MapScreen';
+import NewEventScreen from "./screens/NewEventScreen";
+import HomeScreen from "./screens/HomeScreen";
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
 
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
 
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  }
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    }
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
-  }, []);
+    useEffect(() => {
+        return auth().onAuthStateChanged(onAuthStateChanged);
+    }, []);
 
-  if (!user) {
+    if (!user) {
+        return (
+            <NavigationContainer>
+                <RootStackScreen/>
+            </NavigationContainer>
+        );
+    }
+
     return (
-      <NavigationContainer>
-        <RootStackScreen />
-      </NavigationContainer>
+        <NavigationContainer>
+            <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+                <Drawer.Screen name="HomeDrawer" component={HomeScreen}/>
+                <Drawer.Screen name="EventsScreen" component={EventsScreen}/>
+                <Drawer.Screen name="ProfileScreen" component={ProfileScreen}/>
+                <Drawer.Screen name="AboutScreen" component={AboutScreen}/>
+                <Drawer.Screen name="SettingsScreen" component={SettingsScreen}/>
+                <Drawer.Screen name="NewEventScreen" component={NewEventScreen}/>
+            </Drawer.Navigator>
+        </NavigationContainer>
     );
-  }
-
-  return (
-    <NavigationContainer>
-      <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-        <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
-        <Drawer.Screen name="EventsScreen" component={EventsScreen} />
-        <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
-        <Drawer.Screen name="SupportScreen" component={SupportScreen} />
-        <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
 }
