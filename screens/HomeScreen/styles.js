@@ -7,11 +7,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     headerBar: {
-        marginTop: 40,
-        marginLeft: 20,
-        alignItems: 'center',
-        flexDirection: 'row'
-    },
+        height: 100,
+        width: 100,
+        position: 'absolute',
+        top: 40,
+        left: 20,
+        elevation: 1,
+    }
 });
 
 export default styles;

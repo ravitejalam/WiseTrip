@@ -42,7 +42,7 @@ export default function App() {
     return (
         <NavigationContainer>
             <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-                <Drawer.Screen name="HomeDrawer" component={HomeScreen}/>
+                <Drawer.Screen name="HomeScreen" component={HomeScreen}/>
                 <Drawer.Screen name="EventsScreen" component={EventsScreen}/>
                 <Drawer.Screen name="ProfileScreen" component={ProfileScreen}/>
                 <Drawer.Screen name="AboutScreen" component={AboutScreen}/>

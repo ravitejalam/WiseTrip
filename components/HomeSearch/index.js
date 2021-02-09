@@ -25,5 +25,4 @@ const HomeSearch = (props) => {
     );
 };
 
-
 export default HomeSearch;

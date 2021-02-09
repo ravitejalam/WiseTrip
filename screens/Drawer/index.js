@@ -6,6 +6,7 @@ import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons'
 import auth from '@react-native-firebase/auth';
 import styles from "./styles";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 export function DrawerContent(props) {
     const [isDarkTheme, setIsDarkTheme] = React.useState(false);
@@ -77,13 +78,13 @@ export function DrawerContent(props) {
                         />
                         <DrawerItem
                             icon={({color, size}) => (
-                                <Icon
-                                    name="help-buoy"
+                                <Ionicons
+                                    name="information"
                                     color={color}
                                     size={size}
                                 />
                             )}
-                            label="Support"
+                            label="About"
                             onPress={() => {
                                 props.navigation.navigate('AboutScreen')
                             }}

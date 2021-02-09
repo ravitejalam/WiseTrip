@@ -2,10 +2,11 @@ import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 10,
         backgroundColor: "#DCDCDC",
     },
     eventList: {
-        marginTop: 20,
+        marginTop: 5,
     },
     headerText: {
         fontWeight: 'bold',
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     headerBar: {
         margin: 20,
         alignItems: 'center',
+        alignContent: 'center',
         flexDirection: 'row'
     },
     eventMonth: {

@@ -21,9 +21,7 @@ const AboutScreen = ({navigation}) => {
                 <View style={styles.contentsBox}>
                     <Text style={styles.contentsHeader}>Information</Text>
                     <View style={styles.contentsList}>
-                        <TouchableOpacity onPress={() => {
-                            Linking.openURL('https://www.instagram.com/raviteja.lam')
-                        }} style={styles.contentSpace}>
+                        <TouchableOpacity style={styles.contentSpace}>
                             <Ionicons name='md-information-circle-outline' size={30}/>
                             <View style={styles.contentDetails}>
                                 <Text style={styles.contentsDesc}>
@@ -37,7 +35,7 @@ const AboutScreen = ({navigation}) => {
                     <Text style={styles.contentsHeader}>Developer</Text>
                     <View style={styles.contentsList}>
                         <TouchableOpacity onPress={() => {
-                            Linking.openURL('https://www.instagram.com/raviteja.lam')
+                            Linking.openURL('https://github.com/RavitejaLam/Tripo')
                         }} style={styles.contentSpace}>
                             <Ionicons name='logo-github' size={30}/>
                             <View style={styles.contentDetails}>
@@ -63,7 +61,7 @@ const AboutScreen = ({navigation}) => {
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
-                            Linking.openURL('https://www.instagram.com/raviteja.lam')
+                            Linking.openURL('https://github.com/RavitejaLam/Tripo/pulls')
                         }} style={styles.contentSpace}>
                             <MaterialIcons name='support' size={30}/>
                             <View style={styles.contentDetails}>
@@ -76,7 +74,7 @@ const AboutScreen = ({navigation}) => {
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
-                            Linking.openURL('https://www.instagram.com/raviteja.lam')
+                            Linking.openURL('https://github.com/RavitejaLam/Tripo/issues')
                         }} style={styles.contentSpace}>
                             <Ionicons name='bug-outline' size={30}/>
                             <View style={styles.contentDetails}>

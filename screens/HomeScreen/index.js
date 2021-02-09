@@ -5,17 +5,14 @@ import HomeSearch from "../../components/HomeSearch";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import styles from "./styles";
 
-const HomeScreen = (props) => {
+const HomeScreen = ({navigation}) => {
     return (
         <View>
             <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
-            <SafeAreaView>
-                <View style={styles.headerBar}>
-                    <Ionicons size={32} name='menu' onPress={() => props.navigation.openDrawer()}/>
-                </View>
-            </SafeAreaView>
-
             <HomeMap/>
+            <View style={styles.headerBar}>
+                <Ionicons size={32} name='menu' onPress={() => navigation.openDrawer()}/>
+            </View>
             <HomeSearch/>
         </View>
     )
