@@ -12,7 +12,7 @@ import handlePasswordChange from '../SignInScreen'
 import styles from '../SignInScreen/styles'
 
 GoogleSignin.configure({
-    webClientId: 'API_KEY',
+    webClientId: 'GOOGLE_SIGN_IN_WEB_CLIENT_ID',
 });
 
 const SignUpScreen = ({navigation}) => {

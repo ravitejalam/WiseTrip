@@ -10,7 +10,7 @@ import {SocialIcon} from 'react-native-elements'
 import styles from "./styles";
 
 GoogleSignin.configure({
-    webClientId: 'API_KEY',
+    webClientId: 'GOOGLE_SIGN_IN_WEB_CLIENT_ID',
 });
 
 const SignInScreen = ({navigation}) => {
