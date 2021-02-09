@@ -15,8 +15,8 @@ jobs:
         with:
           node-version: 14.x
       - run: npm install
-      - run: sed s\MAPS_SDK_API_KEY\${{ secrets.MAPS_SDK_API_KEY }}\g android/app/src/main/AndroidManifest.xml
-      - run: sed s\GOOGLE_SIGN_IN_WEB_CLIENT_ID\${{ secrets.GOOGLE_SIGN_IN_WEB_CLIENT_ID }}\g screens/SignInScreen/index.js screens/SignUpScreen/index.js
+      - run: sed s/MAPS_SDK_API_KEY/${{ secrets.MAPS_SDK_API_KEY }}/g android/app/src/main/AndroidManifest.xml
+      - run: sed s/GOOGLE_SIGN_IN_WEB_CLIENT_ID/${{ secrets.GOOGLE_SIGN_IN_WEB_CLIENT_ID }}/g screens/SignInScreen/index.js screens/SignUpScreen/index.js
       - run: cd android
       - run: ./gradlew assembleRelease
       - run: ls ./app/build/outputs/apk/release/
