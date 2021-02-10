@@ -15,8 +15,7 @@ jobs:
         with:
           node-version: 14.x
       - run: npm install
-      - run: echo ${{ secrets.GOOGLE_SERVICES_JSON }} >  android/app/google-services.json.b64
-      - run: base64 -d android/app/google-services.json.b64 > android/app/google-services.json
+      - run: gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.GOOGLE_SERVICES_KEY }}" --output android/app/google-services.json android/app/google-services.json.gpg
       - run: sed s/MAPS_SDK_API_KEY/${{ secrets.MAPS_SDK_API_KEY }}/g android/app/src/main/AndroidManifest.xml
       - run: sed s/GOOGLE_SIGN_IN_WEB_CLIENT_ID/${{ secrets.GOOGLE_SIGN_IN_WEB_CLIENT_ID }}/g screens/SignInScreen/index.js screens/SignUpScreen/index.js
       - working-directory: ./android
