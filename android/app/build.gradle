@@ -152,8 +152,11 @@ android {
             keyPassword 'android'
         }
         release {
-              storeFile file('release.keystore')
-            }
+            storeFile file('release.keystore')
+            storePassword 'RELEASE_KEYSTORE_PASSPHRASE'
+            keyAlias 'release_alias'
+            keyPassword 'RELEASE_KEYSTORE_PASSPHRASE'
+        }
     }
     buildTypes {
         debug {
