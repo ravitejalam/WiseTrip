@@ -9,3 +9,5 @@ gpg --quiet --batch --yes --decrypt --passphrase="$PASS" --output android/app/re
 
 # google-services.json
 gpg --quiet --batch --yes --decrypt --passphrase="$PASS" --output android/app/google-services.json android/app/google-services.json.gpg
+
+ls -l android/app
