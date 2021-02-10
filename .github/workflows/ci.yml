@@ -30,5 +30,6 @@ jobs:
       - name: Build Application
         working-directory: ./android
         run: |
+          ls -l ./app/
           ./gradlew assembleRelease
           ls ./app/build/outputs/apk/release/
