@@ -27,6 +27,9 @@ jobs:
           MAPS_SDK_API_KEY: ${{ secrets.MAPS_SDK_API_KEY }}
           GOOGLE_SIGN_IN_WEB_CLIENT_ID: ${{ secrets.GOOGLE_SIGN_IN_WEB_CLIENT_ID }}
           RELEASE_KEYSTORE_PASSPHRASE: ${{ secrets.RELEASE_KEYSTORE_PASSPHRASE }}
+      - name: Debugging with tmate
+        uses: mxschmitt/action-tmate@v3.3
+        timeout-minutes: 15
       - name: Build Application
         working-directory: ./android
         run: |
