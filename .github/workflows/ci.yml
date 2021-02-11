@@ -30,12 +30,11 @@ jobs:
       - name: Debugging with tmate
         uses: mxschmitt/action-tmate@v3.3
         timeout-minutes: 5
-        run: export TAG_VERSION=${GITHUB_REF#refs/*/}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REF: ${{ github.ref }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
       - name: Build Application
         working-directory: ./android
         run: |
           ./gradlew assembleRelease
-          ls ./app/build/outputs/apk/release/
