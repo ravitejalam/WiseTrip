@@ -1,4 +1,4 @@
-# ![app icon](./.github/readme-images/app-icon.png)WiseTrip
+# ![app icon](./.github/readme-images/app-icon.png) WiseTrip
 
 | Build | Release |
 |-------|----------|
