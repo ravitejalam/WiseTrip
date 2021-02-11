@@ -35,7 +35,7 @@ const AboutScreen = ({navigation}) => {
                     <Text style={styles.contentsHeader}>Developer</Text>
                     <View style={styles.contentsList}>
                         <TouchableOpacity onPress={() => {
-                            Linking.openURL('https://github.com/RavitejaLam/Tripo')
+                            Linking.openURL('https://github.com/RavitejaLam/WiseTrip')
                         }} style={styles.contentSpace}>
                             <Ionicons name='logo-github' size={30}/>
                             <View style={styles.contentDetails}>
@@ -61,7 +61,7 @@ const AboutScreen = ({navigation}) => {
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
-                            Linking.openURL('https://github.com/RavitejaLam/Tripo/pulls')
+                            Linking.openURL('https://github.com/RavitejaLam/WiseTrip/pulls')
                         }} style={styles.contentSpace}>
                             <MaterialIcons name='support' size={30}/>
                             <View style={styles.contentDetails}>
@@ -74,7 +74,7 @@ const AboutScreen = ({navigation}) => {
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
-                            Linking.openURL('https://github.com/RavitejaLam/Tripo/issues')
+                            Linking.openURL('https://github.com/RavitejaLam/WiseTrip/issues')
                         }} style={styles.contentSpace}>
                             <Ionicons name='bug-outline' size={30}/>
                             <View style={styles.contentDetails}>
