@@ -15,7 +15,7 @@ GoogleSignin.configure({
     webClientId: 'GOOGLE_SIGN_IN_WEB_CLIENT_ID',
 });
 
-const SignUpScreen = ({navigation}) => {
+const SignUpScreen = (props) => {
 
     const [data, setData] = useState({
         email: '',
@@ -166,7 +166,7 @@ const SignUpScreen = ({navigation}) => {
                     <LinearGradient colors={['#08d4c4', '#01ab9d']} style={styles.signIn}>
                         <Text style={[styles.textSign, {color: '#fff'}]} onPress={firebaseSignUp}>Sign Up</Text>
                     </LinearGradient>
-                    <TouchableOpacity onPress={() => navigation.goBack()}
+                    <TouchableOpacity onPress={() => props.navigation.goBack()}
                                       style={[styles.signIn, {borderColor: '#009387', borderWidth: 1, marginTop: 15}]}>
                         <Text style={[styles.textSign, {color: '#009387'}]}>Sign In</Text>
                     </TouchableOpacity>

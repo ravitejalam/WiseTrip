@@ -5,11 +5,11 @@ import styles from "./styles";
 import logo from "./../../assets/logo.png";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-const AboutScreen = ({navigation}) => {
+const AboutScreen = (props) => {
     return (
         <View style={styles.container}>
             <View style={styles.headerBar}>
-                <Ionicons size={32} name='menu' onPress={() => navigation.openDrawer()}/>
+                <Ionicons size={32} name='menu' onPress={() => props.navigation.openDrawer()}/>
                 <Text style={styles.headerText}>About</Text>
             </View>
             <View>

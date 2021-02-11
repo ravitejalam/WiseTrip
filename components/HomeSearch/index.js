@@ -7,8 +7,8 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 const HomeSearch = (props) => {
     return (
         <View style={styles.HomeSearchContainer}>
-            <TouchableOpacity onPress={() => {
-            }} style={styles.CreateEventBox}>
+            <TouchableOpacity onPress={() => {props.navigation.navigate('NewEventScreen')}
+            } style={styles.CreateEventBox}>
                 <Text style={styles.CreateEventInputText}>Destination?</Text>
                 <View style={styles.NewEventLogoContainer}>
                     <Entypo name={"plus"} size={20}/>
