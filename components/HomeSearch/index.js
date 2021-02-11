@@ -3,12 +3,13 @@ import {Text, TouchableOpacity, View} from "react-native";
 import styles from "./styles";
 import Entypo from "react-native-vector-icons/Entypo";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import {useNavigation} from '@react-navigation/native';
 
 const HomeSearch = (props) => {
+    const navigation = useNavigation();
     return (
         <View style={styles.HomeSearchContainer}>
-            <TouchableOpacity onPress={() => {props.navigation.navigate('NewEventScreen')}
-            } style={styles.CreateEventBox}>
+            <TouchableOpacity onPress={() => navigation.navigate('NewEventScreen')} style={styles.CreateEventBox}>
                 <Text style={styles.CreateEventInputText}>Destination?</Text>
                 <View style={styles.NewEventLogoContainer}>
                     <Entypo name={"plus"} size={20}/>
