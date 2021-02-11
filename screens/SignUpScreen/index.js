@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StatusBar, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
@@ -6,10 +6,10 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-community/google-signin';
-import {SocialIcon} from 'react-native-elements'
-import testInputChange from '../SignInScreen'
-import handlePasswordChange from '../SignInScreen'
-import styles from '../SignInScreen/styles'
+import {SocialIcon} from 'react-native-elements';
+// import testInputChange from '../SignInScreen';
+// import handlePasswordChange from '../SignInScreen';
+import styles from '../SignInScreen/styles';
 
 GoogleSignin.configure({
     webClientId: 'GOOGLE_SIGN_IN_WEB_CLIENT_ID',
@@ -17,7 +17,7 @@ GoogleSignin.configure({
 
 const SignUpScreen = ({navigation}) => {
 
-    const [data, setData] = React.useState({
+    const [data, setData] = useState({
         email: '',
         password: '',
         confirmPassword: '',
@@ -29,8 +29,43 @@ const SignUpScreen = ({navigation}) => {
         isValidConfirmPassword: false
     });
 
+    const testInputChange = (val) => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (re.test(String(val).toLowerCase())) {
+            setData({
+                ...data,
+                email: val,
+                check_textInputChange: true,
+                isValidUser: true
+            })
+        } else {
+            setData({
+                ...data,
+                email: val,
+                check_textInputChange: false,
+                isValidUser: false
+            })
+        }
+    }
+
+    const handlePasswordChange = (val) => {
+        if (val.length >= 8) {
+            setData({
+                ...data,
+                password: val,
+                isValidPassword: true
+            })
+        } else {
+            setData({
+                ...data,
+                password: val,
+                isValidPassword: false
+            })
+        }
+    }
+
     const handleConfirmPasswordChange = (val) => {
-        if (val.length >= 8 && data.password == val) {
+        if (val.length >= 8 && data.password === val) {
             setData({
                 ...data,
                 confirmPassword: val,
@@ -110,7 +145,7 @@ const SignUpScreen = ({navigation}) => {
                 <Text style={[styles.text_footer, {marginTop: 35}]}>Password</Text>
                 <View style={styles.action}>
                     <Feather name="lock" color="#05375a" size={20}/>
-                    <TextInput placeholder="Your Password" secureTextEntry={data.secureTextEntry ? true : false}
+                    <TextInput placeholder="Your Password" secureTextEntry={data.secureTextEntry}
                                style={styles.textInput} autoCapitalize="none"
                                onChangeText={(val) => handlePasswordChange(val)}/>
                     <TouchableOpacity onPress={updateSecureTextEntry}>
@@ -121,7 +156,7 @@ const SignUpScreen = ({navigation}) => {
                 <View style={styles.action}>
                     <Feather name="lock" color="#05375a" size={20}/>
                     <TextInput placeholder="ReEnter Your Password"
-                               secureTextEntry={data.confirmSecureTextEntry ? true : false} style={styles.textInput}
+                               secureTextEntry={data.confirmSecureTextEntry} style={styles.textInput}
                                autoCapitalize="none" onChangeText={(val) => handleConfirmPasswordChange(val)}/>
                     <TouchableOpacity onPress={updateConfirmSecureTextEntry}>
                         <Feather name={data.confirmSecureTextEntry ? "eye-off" : "eye"} color="grey" size={20}/>

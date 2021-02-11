@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StatusBar, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
@@ -15,7 +15,7 @@ GoogleSignin.configure({
 
 const SignInScreen = ({navigation}) => {
 
-    const [data, setData] = React.useState({
+    const [data, setData] = useState({
         email: '',
         password: '',
         check_textInputChange: false,
