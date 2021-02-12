@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useTheme} from '@react-navigation/native';
 
-const SplashScreen = ({navigation}) => {
+const SplashScreen = (props) => {
     const {colors} = useTheme();
 
     return (
@@ -31,7 +31,7 @@ const SplashScreen = ({navigation}) => {
                 }]}>Stay connected with your Gang!</Text>
                 <Text style={styles.text}>Sign in with account</Text>
                 <View style={styles.button}>
-                    <TouchableOpacity onPress={() => navigation.navigate('SignInScreen')}>
+                    <TouchableOpacity onPress={() => props.navigation.navigate('SignInScreen')}>
                         <LinearGradient
                             colors={['#08d4c4', '#01ab9d']}
                             style={styles.signIn}

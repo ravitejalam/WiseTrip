@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StatusBar, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
@@ -13,9 +13,9 @@ GoogleSignin.configure({
     webClientId: 'GOOGLE_SIGN_IN_WEB_CLIENT_ID',
 });
 
-const SignInScreen = ({navigation}) => {
+const SignInScreen = (props) => {
 
-    const [data, setData] = React.useState({
+    const [data, setData] = useState({
         email: '',
         password: '',
         check_textInputChange: false,
@@ -142,7 +142,7 @@ const SignInScreen = ({navigation}) => {
                     <LinearGradient colors={['#08d4c4', '#01ab9d']} style={styles.signIn}>
                         <Text style={[styles.textSign, {color: '#fff'}]} onPress={firebaseSignIn}>Sign In</Text>
                     </LinearGradient>
-                    <TouchableOpacity onPress={() => navigation.navigate('SignUpScreen')}
+                    <TouchableOpacity onPress={() => props.navigation.navigate('SignUpScreen')}
                                       style={[styles.signIn, {borderColor: '#009387', borderWidth: 1, marginTop: 15}]}>
                         <Text style={[styles.textSign, {color: '#009387'}]}>Sign Up</Text>
                     </TouchableOpacity>

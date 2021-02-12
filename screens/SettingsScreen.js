@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 
-const SettingsScreen = () => {
+const SettingsScreen = (props) => {
     return (
         <View style={styles.container}>
             <Text>Settings Screen</Text>
