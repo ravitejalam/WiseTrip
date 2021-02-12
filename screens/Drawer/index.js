@@ -29,22 +29,22 @@ export function DrawerContent(props) {
                         <View style={{flexDirection: 'row', marginTop: 15}}>
                             <Avatar.Image
                                 source={{
-                                    uri: 'https://pbs.twimg.com/profile_images/953321011679670272/BHIhYlyz_400x400.jpg'
+                                    uri: 'https://i.stack.imgur.com/34AD2.jpg'
                                 }}
                                 size={50}
                             />
                             <View style={{marginLeft: 15, flexDirection: 'column'}}>
-                                <Title style={styles.title}>Raviteja Lam</Title>
-                                <Caption style={styles.caption}>@raviteja.lam</Caption>
+                                <Title style={styles.title}>User Name</Title>
+                                <Caption style={styles.caption}>@username</Caption>
                             </View>
                         </View>
                         <View style={styles.row}>
                             <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>-</Paragraph>
                                 <Caption style={styles.caption}>Following</Caption>
                             </View>
                             <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>100</Paragraph>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>-</Paragraph>
                                 <Caption style={styles.caption}>Followers</Caption>
                             </View>
                         </View>
