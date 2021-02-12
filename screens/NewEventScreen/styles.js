@@ -3,13 +3,27 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     newEventContainer: {
         padding: 10,
+        marginTop: 20,
         backgroundColor: '#fff',
-        height: '100%',
-        // flex:1,
+        flex: 1,
+    },
+    headerBar: {
+        margin: 10,
+        alignItems: 'center',
+        alignContent: 'center',
+        flexDirection: 'row'
+    },
+    bottom: {
+        marginBottom: 36,
+        alignItems: 'center',
+        borderRadius: 10,
+        backgroundColor: '#000',
+        // position: 'absolute',
     },
     headerText: {
         fontWeight: 'bold',
         fontSize: 32,
+        marginHorizontal: 20,
     },
     destinationTextInput: {
         padding: 10,
@@ -40,6 +54,10 @@ const styles = StyleSheet.create({
     PlaceholderText: {
         fontSize: 20,
         color: '#8e8a8a',
+    },
+    buttonBox: {
+        flex: 1,
+        justifyContent: 'flex-end',
     }
 });
 export default styles;
