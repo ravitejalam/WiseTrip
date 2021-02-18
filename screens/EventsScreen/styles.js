@@ -3,7 +3,8 @@ import {StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     container: {
         marginTop: 20,
-        backgroundColor: "#DCDCDC",
+        backgroundColor: "#fff",
+        flex: 1,
     },
     eventList: {
         marginTop: 5,
@@ -34,16 +35,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     eventMonth: {
-        fontSize: 16,
+        fontSize: 20,
         color: "#0099FF",
-        fontWeight: "600",
+        fontWeight: "900",
     },
     eventContent: {
         flex: 1,
         flexDirection: 'column',
         alignItems: 'flex-start',
         marginLeft: 10,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#eee',
         padding: 10,
         borderRadius: 10
     },
@@ -55,10 +56,16 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: "#151515",
     },
-    userName: {
-        fontSize: 16,
+    eventName: {
+        fontSize: 20,
         color: "#151515",
+        fontWeight: 'bold',
     },
+    eventYear: {
+        fontSize: 16,
+        color: "#0099FF",
+        fontWeight: "600",
+    }
 });
 
 export default styles;
