@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {createStackNavigator} from '@react-navigation/stack';
 import NewEventScreen from "../screens/NewEventScreen";
 import HomeScreen from "../screens/HomeScreen";
 import {NavigationContainer} from "@react-navigation/native";
@@ -10,10 +9,28 @@ import EventsScreen from "../screens/EventsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import AboutScreen from "../screens/AboutScreen/aboutScreen";
 import SettingsScreen from "../screens/SettingsScreen";
-
-const RootUserStack = createStackNavigator();
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 const Drawer = createDrawerNavigator();
+
+const user = auth().currentUser;
+const userDoc = firestore().collection('users').doc(user.uid);
+
+userDoc.get().then(documentSnapshot => {
+    if (documentSnapshot.exists) {
+        console.log('User already exists data: ', documentSnapshot.data());
+    } else {
+        userDoc.set({
+            name: user.displayName ? user.displayName : user.email.split('@')[0],
+            latitude: 0.0,
+            longitude: 0.0
+        })
+        .then(() => {
+            console.log('User Doc added!');
+        });
+    }
+});
 
 const RootUserStackScreen = (props) => (
 

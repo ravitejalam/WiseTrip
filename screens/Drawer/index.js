@@ -1,24 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View,} from 'react-native';
-import {Avatar, Caption, Drawer, Paragraph, Switch, Text, Title, TouchableRipple} from "react-native-paper";
+import {Avatar, Caption, Drawer, Title} from "react-native-paper";
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import auth from '@react-native-firebase/auth';
 import styles from "./styles";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import firestore from "@react-native-firebase/firestore";
 
 export function DrawerContent(props) {
-    const [isDarkTheme, setIsDarkTheme] = React.useState(false);
-
-    const toggleTheme = () => {
-        setIsDarkTheme(!isDarkTheme);
-    }
     const firebaseSignOut = () => {
         auth()
             .signOut()
             .then(() => console.log('User signed out!'));
     }
+
+    const user = auth().currentUser;
+    const [username, setUsername] = useState();
+    firestore().collection('users').doc(user.uid).get().then(doc => {
+        setUsername(doc.data().name);
+    });
+
+    let profilePictureURL = user.photoURL ? user.photoURL : 'https://i.stack.imgur.com/34AD2.jpg';
     return (
         <View style={{flex: 1}}>
             <DrawerContentScrollView {...props}>
@@ -29,27 +33,30 @@ export function DrawerContent(props) {
                         <View style={{flexDirection: 'row', marginTop: 15}}>
                             <Avatar.Image
                                 source={{
-                                    uri: 'https://i.stack.imgur.com/34AD2.jpg'
+                                    uri: profilePictureURL
                                 }}
                                 size={50}
                             />
                             <View style={{marginLeft: 15, flexDirection: 'column'}}>
-                                <Title style={styles.title}>User Name</Title>
-                                <Caption style={styles.caption}>@username</Caption>
-                            </View>
-                        </View>
-                        <View style={styles.row}>
-                            <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>-</Paragraph>
-                                <Caption style={styles.caption}>Following</Caption>
-                            </View>
-                            <View style={styles.section}>
-                                <Paragraph style={[styles.paragraph, styles.caption]}>-</Paragraph>
-                                <Caption style={styles.caption}>Followers</Caption>
+                                <Title style={styles.title}>{username}</Title>
+                                <Caption style={styles.caption}>Edit Profile</Caption>
                             </View>
                         </View>
                     </View>
                     <Drawer.Section style={styles.drawerSection}>
+                        <DrawerItem
+                            icon={({color, size}) => (
+                                <Icon
+                                    name="home"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Home"
+                            onPress={() => {
+                                props.navigation.navigate('HomeScreen')
+                            }}
+                        />
                         <DrawerItem
                             icon={({color, size}) => (
                                 <Icon
@@ -89,18 +96,6 @@ export function DrawerContent(props) {
                                 props.navigation.navigate('AboutScreen')
                             }}
                         />
-                    </Drawer.Section>
-                    <Drawer.Section title="Preferences">
-                        <TouchableRipple onPress={() => {
-                            [toggleTheme(), alert('Dark Theme is under development')]
-                        }}>
-                            <View style={styles.preference}>
-                                <Text>Dark Theme</Text>
-                                <View pointerEvents="none">
-                                    <Switch value={isDarkTheme}/>
-                                </View>
-                            </View>
-                        </TouchableRipple>
                     </Drawer.Section>
                 </View>
             </DrawerContentScrollView>
