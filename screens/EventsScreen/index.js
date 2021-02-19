@@ -22,10 +22,19 @@ export default class EventsScreen extends Component {
         const userDocRef = firestore().collection('users').doc(user.uid);
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         firestore().collection('events').where('members', 'array-contains',
-            userDocRef).get().then(querySnapshot => {
+            userDocRef).onSnapshot(querySnapshot => {
+            this.setState({
+                data: []
+            });
             querySnapshot.forEach(doc => {
                 const start_date = doc.data().start_date_time.toDate();
-                const event = {id: doc.id, ...doc.data(),date: start_date.getDate(), month: monthNames[start_date.getMonth()], year: start_date.getFullYear(),time: start_date.toLocaleTimeString()};
+                const event = {
+                    id: doc.id, ...doc.data(),
+                    date: start_date.getDate(),
+                    month: monthNames[start_date.getMonth()],
+                    year: start_date.getFullYear(),
+                    time: start_date.toLocaleTimeString()
+                };
                 console.debug(event);
                 this.setState({
                     data: [...this.state.data, event]
