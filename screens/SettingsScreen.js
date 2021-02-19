@@ -5,10 +5,6 @@ const SettingsScreen = (props) => {
     return (
         <View style={styles.container}>
             <Text>Settings Screen</Text>
-            <Button
-                title="Click Here"
-                onPress={() => alert('Button Clicked!')}
-            />
         </View>
     );
 };

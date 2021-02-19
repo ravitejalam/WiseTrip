@@ -9,6 +9,7 @@
 Features include:
 * Google Auth
 * Collective travel Assistant with Google Maps
+* Manage Trip events with Trip Calendar
 
 ## Download
 Get the app from our [releases page](https://github.com/RavitejaLam/WiseTrip/releases).

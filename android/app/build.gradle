@@ -1,7 +1,5 @@
 apply plugin: "com.android.application"
 
-apply plugin: 'com.google.gms.google-services'
-
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -153,9 +151,9 @@ android {
         }
         release {
             storeFile file('release.keystore')
-            storePassword 'RELEASE_KEYSTORE_PASSPHRASE'
+            storePassword 'WiseTrip'
             keyAlias 'release_alias'
-            keyPassword 'RELEASE_KEYSTORE_PASSPHRASE'
+            keyPassword 'WiseTrip'
         }
     }
     buildTypes {
@@ -232,3 +230,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
+apply plugin: 'com.google.gms.google-services'

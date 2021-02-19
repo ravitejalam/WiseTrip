@@ -1,4 +1,3 @@
-import React from "react";
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
@@ -13,22 +12,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     logoImage: {
-        height: '75%',
-        // flex: 1,
-        resizeMode: 'contain'
+        margin:20
     },
     logoBox: {
-        height: '28%',
+        padding: 10,
         alignContent: 'center',
         alignItems: 'center',
-
     },
     contentsBox: {
         padding: 15,
         margin: 15,
         backgroundColor: "#eee",
         borderRadius: 10,
-        height: '15%'
     }, contentsHeader: {
         fontSize: 16,
         fontWeight: 'bold',
@@ -42,7 +37,6 @@ const styles = StyleSheet.create({
     contentSpace: {
         padding: 5,
         marginVertical: 10,
-        // borderBottomWidth:1,
         borderColor: '#8b8b8b',
         borderRadius: 5,
         flexDirection: 'row',
@@ -61,6 +55,20 @@ const styles = StyleSheet.create({
     },
     contentsList: {
         padding: 10,
+    },
+    SignOut: {
+        padding: 10,
+        margin:10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderRadius: 10,
+        borderWidth: 1,
+        alignContent: 'center'
+    },
+    SignOutText: {
+        fontSize: 16,
+        padding: 3,
     }
 });
 

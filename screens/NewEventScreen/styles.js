@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     },
     destinationTextInput: {
         padding: 10,
-        backgroundColor: '#eee',
+        borderColor: '#eee',
+        borderWidth: 1,
         marginVertical: 10,
         borderRadius: 10,
         fontSize: 20,
