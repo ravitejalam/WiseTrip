@@ -7,11 +7,14 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import firestore from "@react-native-firebase/firestore";
 import Toast from "react-native-simple-toast";
 import auth from "@react-native-firebase/auth";
+import {GooglePlacesAutocomplete} from "react-native-google-places-autocomplete";
 
 const NewEventScreen = (props) => {
     const [date, setDate] = useState(new Date());
     const [eventDetails, setEventDetails] = useState({
         event_name: null,
+        meet_up_point_name: '',
+        destination_point_name: '',
         meetup: new firestore.GeoPoint(0, 0),
         destination: new firestore.GeoPoint(0, 0),
         members: [firestore().collection('users').doc(auth().currentUser.uid)],
@@ -55,29 +58,11 @@ const NewEventScreen = (props) => {
                        onChangeText={(eventName) => setEventDetails({...eventDetails, event_name: eventName})}
                        value={eventDetails.event_name} placeholder="Event Name"/>
             <TextInput style={styles.destinationTextInput}
-                       onChangeText={(meetUpLatitude) => setEventDetails({
-                           ...eventDetails,
-                           meetup: new firestore.GeoPoint(meetUpLatitude, eventDetails.meetup.longitude)
-                       })}
-                       value={eventDetails.meetup.latitude} placeholder="Meet Up Latitude"/>
+                       onChangeText={(meetUpPointName) => setEventDetails({...eventDetails, meet_up_point_name: meetUpPointName})}
+                       value={eventDetails.meet_up_point_name} placeholder="Meet Up Point Name"/>
             <TextInput style={styles.destinationTextInput}
-                       onChangeText={(meetUpLongitude) => setEventDetails({
-                           ...eventDetails,
-                           meetup: new firestore.GeoPoint(eventDetails.meetup.latitude, meetUpLongitude)
-                       })}
-                       value={eventDetails.meetup.longitude} placeholder="Meet Up Longitude"/>
-            <TextInput style={styles.destinationTextInput}
-                       onChangeText={(destinationLatitude) => setEventDetails({
-                           ...eventDetails,
-                           meetup: new firestore.GeoPoint(destinationLatitude, eventDetails.destination.longitude)
-                       })}
-                       value={eventDetails.destination.latitude} placeholder="Destination Latitude"/>
-            <TextInput style={styles.destinationTextInput}
-                       onChangeText={(destinationLongitude) => setEventDetails({
-                           ...eventDetails,
-                           meetup: new firestore.GeoPoint(eventDetails.destination.latitude, destinationLongitude)
-                       })}
-                       value={eventDetails.destination.longitude} placeholder="Destination Longitude"/>
+                       onChangeText={(destinationPointName) => setEventDetails({...eventDetails, destination_point_name: destinationPointName})}
+                       value={eventDetails.destination_point_name} placeholder="Destination Point Name"/>
             {/*<GooglePlacesAutocomplete*/}
             {/*    placeholder='Meet Up Place?'*/}
             {/*    onPress={(data, details = null) => {*/}
